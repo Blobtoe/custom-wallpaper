@@ -1,0 +1,28 @@
+{
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"backgroundimagethemes" : 
+			{
+				"index" : 0,
+				"order" : 100,
+				"text" : "Background Image themes (seperate each one with a comma)",
+				"type" : "textinput",
+				"value" : "nature"
+			},
+			"schemecolor" : 
+			{
+				"order" : 0,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "0 0 0"
+			}
+		},
+		"supportsaudioprocessing" : true
+	},
+	"title" : "Custom Wallpaper",
+	"type" : "web",
+	"version" : 0
+}
