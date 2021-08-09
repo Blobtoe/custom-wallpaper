@@ -8,4 +8,7 @@
 - ### Dynamic Background Image
     Using the Unsplash API, the wallpaper randomly chooses a picture to use as the background. The image is automatically updated at midnight, and themes can be chosen by the user to increase customization. the wallpaper tries to only choose pictures that are the same resolution as your display.
 
+- ### Quote of the Day
+    The quote of the day is fetched from [zenquotes.io](https://zenquotes.io/) and displayed on the wallpaper. This quote changes daily with the wallpaper.
+
 ![preview](preview2.png)

@@ -77,6 +77,7 @@ function SetBackgroundImage() {
             }
         })
         .done(function (data, textStatus, request) {
+            SetQuote();
             localStorage.setItem("backgroundImage", xhr.responseURL);
             document.getElementById("background-image").src = xhr.responseURL;
             localStorage.setItem("nextBackgroundUpdate", new Date().setHours(24, 0, 0, 0))
@@ -87,8 +88,29 @@ function SetBackgroundImage() {
         })
     }
     else {
+        SetQuote();
         document.getElementById("background-image").src = localStorage.getItem("backgroundImage");
     }
+}
+
+function SetQuote() {
+    $.ajax({
+        url: "https://zenquotes.io/api/today",
+        type: "GET",
+        headers: {
+            "content-type": "application/json"
+        }
+    })
+    .done(function (data, textStatus, request) {
+        data = JSON.parse(data)
+        console.log(data);
+        document.getElementById("quote").innerHTML = `"${data[0].q}"`;
+        document.getElementById("author").innerHTML = `- ${data[0].a}`;
+    })
+    .fail(function(request) {
+        console.log(`Failed to get quote. ${request.status}`);
+        setTimeout(SetQuote, 5000);
+    })
 }
 
 function GetMediaInfo() {

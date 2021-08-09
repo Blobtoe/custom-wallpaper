@@ -19,7 +19,7 @@
 #visualizer-right {
     position: absolute;
     right: 0;
-    top: 0
+    top: 0;
 }
 
 #right-container {
@@ -67,4 +67,25 @@ body {
     bottom: 0;
     right: 0;
     left: 0;
+}
+
+#quote-container {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    margin: auto;
+    z-index: 1;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    font-size: .75em;
+}
+
+#quote {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#author {
+    font-family: 'Source Sans Pro', sans-serif;
 }
