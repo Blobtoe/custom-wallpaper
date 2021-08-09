@@ -6,6 +6,8 @@ var innerCircleSize
 
 var backgroundImageThemes = "";
 
+var mediaFailCount = 0;
+
 function wallpaperAudioListener(audioArray) {
     var left = smoothOut(audioArray.slice(0, 64).reverse(), 0.8);
     var right = smoothOut(audioArray.slice(64).reverse(), 0.8);
@@ -37,10 +39,16 @@ window.onload = function() {
         applyUserProperties: function(properties) {
             if (properties.backgroundimagethemes) {
                 backgroundImageThemes = properties.backgroundimagethemes.value.split(",").map((x) => x.trim())
-                GetBackgroundImage();                
+                SetBackgroundImage();
             }
         },
     };
+
+    let midnight = new Date().setHours(24, 0, 0, 0)
+    setTimeout(function() {
+        SetBackgroundImage();
+        setInterval(SetBackgroundImage, 86400000);
+    }, midnight - Date.now())
 
     leftBars = document.getElementById("visualizer-left").getElementsByClassName("bar");
     rightBars = document.getElementById("visualizer-right").getElementsByClassName("bar");
@@ -56,29 +64,31 @@ window.onload = function() {
     document.getElementById("visualizer-left").style.width = maxBarWidth + "px";
     document.getElementById("visualizer-right").style.width = maxBarWidth + "px";
     window.wallpaperRegisterAudioListener(wallpaperAudioListener);
-
-    let midnight = new Date().setHours(24, 0, 0, 0)
-    setTimeout(function() {
-        GetBackgroundImage();
-        setInterval(GetBackgroundImage, 86400000);
-    }, midnight - Date.now())
 };
 
-function GetBackgroundImage() {
-    var xhr = new XMLHttpRequest();
-    $.ajax({
-        url: `https://source.unsplash.com/featured/${window.screen.width}x${window.screen.height}/?${backgroundImageThemes.join(",")}`,
-        type: "GET",
-        xhr: function() {
-            return xhr;
-        }
-    })
-    .done(function (data, textStatus, request) {
-        document.getElementById("background-image").src = xhr.responseURL;
-    })
-    .fail(function(request) {
-        console.log(`Failed to get background image. ${request.status}`);
-    })
+function SetBackgroundImage() {
+    if (Date.now() > parseInt(localStorage.getItem("nextBackgroundUpdate")) || localStorage.getItem("backgroundImage") == null) {
+        var xhr = new XMLHttpRequest();
+        $.ajax({
+            url: `https://source.unsplash.com/featured/${window.screen.width}x${window.screen.height}/?${backgroundImageThemes.join(",")}`,
+            type: "GET",
+            xhr: function() {
+                return xhr;
+            }
+        })
+        .done(function (data, textStatus, request) {
+            localStorage.setItem("backgroundImage", xhr.responseURL);
+            document.getElementById("background-image").src = xhr.responseURL;
+            localStorage.setItem("nextBackgroundUpdate", new Date().setHours(24, 0, 0, 0))
+        })
+        .fail(function(request) {
+            console.log(`Failed to get background image. ${request.status}`);
+            setTimeout(SetBackgroundImage, 5000);
+        })
+    }
+    else {
+        document.getElementById("background-image").src = localStorage.getItem("backgroundImage");
+    }
 }
 
 function GetMediaInfo() {
@@ -90,12 +100,25 @@ function GetMediaInfo() {
         }
     })
     .done(function (data, textStatus, request) {
-        document.getElementById("thumbnail").setAttribute("src", `data:image/jpg;base64,${data.thumbnail}`)
-        document.getElementById("song").innerHTML = data.title;
-        document.getElementById("artist").innerHTML = `by ${data.artist}`;
+        if (data) {
+            document.getElementById("media-info").style.display = "block";
+            document.getElementById("thumbnail").setAttribute("src", `data:image/jpg;base64,${data.thumbnail}`)
+            document.getElementById("song").innerHTML = data.title;
+            document.getElementById("artist").innerHTML = `by ${data.artist}`;
+        }
+        else {
+            mediaFailCount += 1;
+            if (mediaFailCount >= 5) {
+                document.getElementById("media-info").style.display = "none";
+            }
+        }
     })
     // if the request fails
     .fail(function(request) {
+        mediaFailCount += 1;
+        if (mediaFailCount >= 5) {
+            document.getElementById("media-info").style.display = "none";
+        }
         console.log(`Failed to get media info. ${request.status}`)
     })
 }
