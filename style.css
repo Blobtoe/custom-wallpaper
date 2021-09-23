@@ -10,24 +10,26 @@
 #visualizer-left {
     display: inline-block;
     position: absolute;
+    z-index: 2;
 }
 
 #visualizer-left .bar {
-    background-image: linear-gradient(to right, rgb(255 145 80), red, rgb(255 145 80));
+    background-image: linear-gradient(to right, var(--vibrant-color), var(--light-vibrant-color) ,var(--vibrant-color));
 }
 
 #visualizer-right {
     position: absolute;
     right: 0;
     top: 0;
+    z-index: 2;
 }
 
 #right-container {
     float: right;
 }
 
-#visualizer-right .bar {
-    background-image: linear-gradient(to right, rgb(255 145 80) , red, rgb(255 145 80));
+#visualizer-right .bar{
+    background-image: linear-gradient(to right, var(--vibrant-color), var(--light-vibrant-color) ,var(--vibrant-color));
     float: right;
     margin-left: 100%;
 }
@@ -37,6 +39,7 @@
     height: fit-content;
     text-align: center;
     margin: auto;
+    font-size: 1em;
     font-family: monospace;
     z-index: 1;
     background-color: rgba(0, 0, 0, 0.7);
