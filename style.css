@@ -1,11 +1,14 @@
-.bar {
-    height: 20px;
-    width: 20px;
-    padding: 0;
+body {
+    transition: 0.3s;
+    display: flex;
     margin: 0;
-    transition: 0.1s;
-    background-attachment: fixed !important;
+    background: radial-gradient(circle at center, red 20%, transparent 40%) no-repeat border-box, linear-gradient(to right , rgb(255, 165, 80), yellow, rgb(255, 165, 80)) no-repeat border-box;
 }
+
+
+
+
+/* MUSIC VISUALIZER */
 
 #visualizer-left {
     display: inline-block;
@@ -15,7 +18,9 @@
 
 #visualizer-left .bar {
     background-image: linear-gradient(to right, var(--vibrant-color), var(--light-vibrant-color) ,var(--vibrant-color));
+    background-size: 20% 100%;
 }
+
 
 #visualizer-right {
     position: absolute;
@@ -32,7 +37,24 @@
     background-image: linear-gradient(to right, var(--vibrant-color), var(--light-vibrant-color) ,var(--vibrant-color));
     float: right;
     margin-left: 100%;
+    background-position-x: 0px;
+    background-size: 20% 100%;
 }
+
+
+.bar {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    transition: 0.1s;
+    background-attachment: fixed !important;
+}
+
+
+
+
+/* MEDIA INFO */
 
 #media-info {
     width: fit-content;
@@ -56,12 +78,9 @@
     height: 300px;
 }
 
-body {
-    transition: 0.3s;
-    display: flex;
-    margin: 0;
-    background: radial-gradient(circle at center, red 20%, transparent 40%) no-repeat border-box, linear-gradient(to right , rgb(255, 165, 80), yellow, rgb(255, 165, 80)) no-repeat border-box;
-}
+
+
+/* BACKGROUND IMAGE */
 
 #background-image {
     position: absolute;
@@ -71,6 +90,11 @@ body {
     right: 0;
     left: 0;
 }
+
+
+
+
+/* QUOTE */
 
 #quote-container {
     width: fit-content;
