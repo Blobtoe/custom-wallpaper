@@ -10,5 +10,8 @@
 
 - ### Quote of the Day
     The quote of the day is fetched from [zenquotes.io](https://zenquotes.io/) and displayed on the wallpaper. This quote changes daily with the wallpaper.
+    
+- ### Music Visualizer
+    Tow bar-styled music visualizer show on the left and right side of the desktop displaying the left and right audio channel respectively. The bars are colored using the background image's vibrant colors to make the visualizer fit in. 
 
 ![preview](preview2.png)
