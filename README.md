@@ -14,4 +14,4 @@
 - ### Music Visualizer
     Tow bar-styled music visualizer show on the left and right side of the desktop displaying the left and right audio channel respectively. The bars are colored using the background image's vibrant colors to make the visualizer fit in. 
 
-![preview](preview2.png)
+![preview](preview3.png)
