@@ -1,0 +1,38 @@
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.exe
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.deps.json
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.runtimeconfig.json
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.dll
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.pdb
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\websocket-sharp.dll
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\Microsoft.Windows.SDK.NET.dll
+D:\Programming\C#\MediaInfoWebSocketClient\bin\Debug\net6.0-windows10.0.19041.0\WinRT.Runtime.dll
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.csproj.AssemblyReference.cache
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.AssemblyInfoInputs.cache
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.AssemblyInfo.cs
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.csproj.CoreCompileInputs.cache
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.csproj.CopyComplete
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.dll
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\refint\MediaInfoWebsocketServer.dll
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.pdb
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.genruntimeconfig.cache
+D:\Programming\C#\MediaInfoWebSocketClient\obj\Debug\net6.0-windows10.0.19041.0\ref\MediaInfoWebsocketServer.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.exe
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.deps.json
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.runtimeconfig.json
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.pdb
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\websocket-sharp.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\Microsoft.Windows.SDK.NET.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\bin\Debug\net6.0-windows10.0.19041.0\WinRT.Runtime.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.csproj.AssemblyReference.cache
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.AssemblyInfoInputs.cache
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.AssemblyInfo.cs
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.csproj.CoreCompileInputs.cache
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.csproj.CopyComplete
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\refint\MediaInfoWebsocketServer.dll
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.pdb
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\MediaInfoWebsocketServer.genruntimeconfig.cache
+C:\Program Files\Utils\custom wallpaper\MediaInfoWebSocketServer\obj\Debug\net6.0-windows10.0.19041.0\ref\MediaInfoWebsocketServer.dll

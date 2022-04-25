@@ -1,11 +1,14 @@
-var maxBarWidth = 500;
-var leftBars;
-var rightBars;
-
+var maxBarWidthBig = 500;
+var maxBarWidthSmall = 200;
+var leftBarsBig;
+var rightBarsBig;
+var leftBarsSmall;
+var rightBarsSmall;
 var backgroundImageThemes = [];
-
-var mediaFailCount = 0;
-
+var webSocket;
+const webSocketAddress = "ws://localhost:8000/mediainfo";
+var currentSongLength;
+var mediaBoxHeight = 1;
 
 // updates the music visualizer every time wallpaper engines gives us new audio data
 function wallpaperAudioListener(audioArray) {
@@ -14,29 +17,44 @@ function wallpaperAudioListener(audioArray) {
     var left = smoothOut(audioArray.slice(0, 64).reverse(), 0.8);
     var right = smoothOut(audioArray.slice(64).reverse(), 0.8);
 
-    // set the height of each bar proportionally to their respective sample
-    for (let i = 0; i < left.length; i++) {
-        const bar = leftBars[i];
-        const sample = Math.min(left[i], 1);
+    for (let i = 0; i < 64; i++) {
+        const leftBarBig = leftBarsBig[i];
+        const rightBarBig = rightBarsBig[i];
+        const leftBarSmall = leftBarsSmall[i];
+        const rightBarSmall = rightBarsSmall[i];
+        const leftSample = Math.min(left[i], 1);
+        const rightSample = Math.min(right[i], 1);
 
-        bar.style.height = ((window.innerHeight - 40) / left.length) + "px";
-        bar.style.width = sample * maxBarWidth + "px";
-    }
-    for (let i = 0; i < right.length; i++) {
-        const bar = rightBars[i];
-        const sample = Math.min(right[i], 1);
+        // set the width of the bars
+        leftBarBig.style.width = (leftSample * maxBarWidthBig) + "px";
+        rightBarBig.style.width = (rightSample * maxBarWidthBig) + "px";
+        leftBarSmall.style.width = (leftSample * maxBarWidthSmall) + "px";
+        rightBarSmall.style.width = (rightSample * maxBarWidthSmall) + "px";
 
-        bar.style.height = ((window.innerHeight - 40) / right.length) + "px";
-        bar.style.width = sample * maxBarWidth + "px";
+        // set the height of the bars
+        leftBarBig.style.height = ((window.innerHeight - 40) / 64) + "px";
+        rightBarBig.style.height = ((window.innerHeight - 40) / 64) + "px";
     }
 }
 
 // when the html document is fully loaded
 window.onload = function() {
 
+    let visualizerContainersBig = document.getElementsByClassName("visualizer-container-big");
+    let visualizerContainersSmall = document.getElementsByClassName("visualizer-container-small");
+    for (let i = 0; i < 64; i++) {
+        for (let j = 0; j < visualizerContainersBig.length; j++) {
+            visualizerContainersBig[j].innerHTML += '<div class="bar-big"></div>';
+        }
+        for (let j = 0; j < visualizerContainersSmall.length; j++) {
+            visualizerContainersSmall[j].innerHTML += '<div class="bar-small"></div>';
+        }
+    }
+
     // start interval to get media info every 5 seconds
-    GetMediaInfo();
-    setInterval(GetMediaInfo, 5000);
+    //GetMediaInfo();
+    //setInterval(GetMediaInfo, 5000);
+    ConnectWebsocket();
 
     // set the background image with the user's themes
     window.wallpaperPropertyListener = {
@@ -63,12 +81,14 @@ window.onload = function() {
     }, midnight - Date.now())
 
     // store list of bars in global variables
-    leftBars = document.getElementById("visualizer-left").getElementsByClassName("bar");
-    rightBars = document.getElementById("visualizer-right").getElementsByClassName("bar");
+    leftBarsBig = document.getElementById("visualizer-left-big").getElementsByClassName("bar-big");
+    rightBarsBig = document.getElementById("visualizer-right-big").getElementsByClassName("bar-big");
+    leftBarsSmall = document.getElementById("visualizer-left-small").getElementsByClassName("bar-small");
+    rightBarsSmall = document.getElementById("visualizer-right-small").getElementsByClassName("bar-small");
 
     // set width of visualizer containers to maximum bar width
-    document.getElementById("visualizer-left").style.width = maxBarWidth + "px";
-    document.getElementById("visualizer-right").style.width = maxBarWidth + "px";
+    document.getElementById("visualizer-left-big").style.width = maxBarWidthBig + "px";
+    document.getElementById("visualizer-right-big").style.width = maxBarWidthBig + "px";
 
     // register the audio listener
     window.wallpaperRegisterAudioListener(wallpaperAudioListener);
@@ -80,7 +100,7 @@ async function GetBackgroundImage(themes) {
     return new Promise(resolve => {
         var xhr = new XMLHttpRequest();
         $.ajax({
-            url: `https://source.unsplash.com/featured/${window.screen.width}x${window.screen.height}/?${themes.join(",")}`,
+            url: `https://source.unsplash.com/${window.screen.width}x${window.screen.height}/?${themes.join(",")}`,
             type: "GET",
             xhr: function() {
                 return xhr;
@@ -134,7 +154,7 @@ async function GetQuote() {
             }
         })
         .done(function (data, textStatus, request) {
-            resolve(JSON.parse(data)[0]);
+            resolve(data[0]);
         })
         .fail(function(request) {
             console.log(`Failed to get quote. ${request.status}`);
@@ -170,10 +190,85 @@ async function SetQuote() {
     document.getElementById("author").innerHTML = `- ${quote.a}`;
 }
 
+function ConnectWebsocket() {
+    webSocket = new WebSocket(webSocketAddress);
+    webSocket.onerror = function(event) {
+        setTimeout(ConnectWebsocket, 5000);
+    };
+    webSocket.onopen = function(event) {
+        console.log("WebSocket connected");
+        webSocket.onmessage = function(event) {
+            ReceiveMediaInfo(event.data);
+        };
+        webSocket.onclose = function(event) {
+            console.log("WebSocket closed");
+            document.getElementById("media-container").style.display = "none";
+            setTimeout(ConnectWebsocket, 5000);
+        }
+    }
+}
+
+ReceiveMediaInfo = function(data) {
+    data = JSON.parse(data);
+    console.log(data)
+    if (data == null) {
+        document.getElementById("media-container").style.display = "none";
+        return;
+    }
+    if (data.Title != null) {
+        document.getElementById("thumbnail").setAttribute("src", `data:image/jpg;base64,${data.Thumbnail}`)
+        document.getElementById("song").innerHTML = data.Title;
+        document.getElementById("artist").innerHTML = `by ${data.Artist}`;
+        currentSongLength = data.SongLength;
+        mediaBoxHeight = document.getElementById("media-container").offsetHeight;
+    }
+    if (data.Paused != null) {
+        if (!data.Playing) {
+            document.getElementById("media-container").style.display = "none";
+        }
+        else {
+            document.getElementById("media-container").style.display = "block";
+            document.getElementById("media-container").offsetHeight;
+        }
+    }
+    if (data.Progress != null && currentSongLength != null) {
+        document.getElementById("media-progress-inner").style.width = `${(data.Progress / currentSongLength) * 100}%`;
+        mediaBoxHeight = document.getElementById("media-container").offsetHeight;
+    }
+}
+
+/*
+function ConnectWebsocket(address) {
+    webSocket = new WebSocket(address);
+    return new Promise(function(resolve, reject) {
+        webSocket.onopen = function() {
+            webSocket.addEventListener("message", function(event) {
+                console.log("Received: " + event.data);
+                ReceiveMediaInfo(event);   
+            });
+            resolve();
+        };
+        webSocket.onerror = function(error) {
+            reject(error);
+        };
+    });
+}
+
+async function RequestMediaInfo() {
+    if (webSocket == null || webSocket.readyState != 1) {
+        await ConnectWebsocket(webSocketAddress);
+    }
+
+    webSocket.send(JSON.stringify({"type": "get_media_info"}));
+}
+*/
+
+
+/*
 // get media info from python server
 function GetMediaInfo() {
     $.ajax({
-        url: "http://127.0.0.1:5000/media_info",
+        url: "http://127.0.0.1:5000/MediaInfo",
         type: "GET",
         headers: {
             "content-type": "application/json"
@@ -206,6 +301,7 @@ function GetMediaInfo() {
         }
     })
 }
+*/
 
 // get vibrant colors from background image
 function SampleBackgroundImage() {
@@ -213,7 +309,6 @@ function SampleBackgroundImage() {
     let canvas = document.createElement('canvas');
     let context = canvas.getContext('2d');
     let img = document.getElementById('background-image');
-    console.log(img.width);
     canvas.width = img.width;
     canvas.height = img.height;
     context.drawImage(img, 0, 0 );
@@ -252,6 +347,7 @@ function SampleBackgroundImage() {
         // set css variables to update bar gradient colors
         document.documentElement.style.setProperty("--vibrant-color", `rgb(${palette.DarkVibrant.rgb.join(" ")})`)
         document.documentElement.style.setProperty("--light-vibrant-color", `rgb(${palette.LightVibrant.rgb.join(" ")})`)
+        console.log(pallette);
     })
 }
 

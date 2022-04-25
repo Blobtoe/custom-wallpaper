@@ -1,4 +1,6 @@
 {
+	"contentrating" : "Everyone",
+	"description" : "Randomize your desktop with a new background image from Unsplash and a new quote from zenquotes every day. Set a theme for background images (default is \"nature\") to get more personized images. Music visualizer matches colors with vibrant colors from the backgorund to make it more visually appealing. Add live music info bubble (album cover, song name, artist) by checking out the github.(https://github.com/Blobtoe/custom-wallpaper)",
 	"file" : "index.html",
 	"general" : 
 	{
@@ -17,13 +19,14 @@
 				"order" : 0,
 				"text" : "ui_browse_properties_scheme_color",
 				"type" : "color",
-				"value" : "1 1 0"
+				"value" : "0 0.5019607843137255 0"
 			}
 		},
 		"supportsaudioprocessing" : true
 	},
 	"preview" : "preview.jpg",
-	"title" : "Custom Wallpaper",
-	"type" : "web",
+	"tags" : [ "Nature" ],
+	"title" : "Random Wallpaper and Quote with Music Visualizer",
+	"type" : "Web",
 	"version" : 0
 }

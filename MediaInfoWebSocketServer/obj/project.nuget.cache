@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZSwLNR4o3U1nZJhkcE5MQLhKchuSC5r79ztcLERgt8kKzor/lqZEiH53gjBjFPw0jwYgJa5ysXgv72JUVVUlEw==",
+  "success": true,
+  "projectFilePath": "C:\\Program Files\\Utils\\custom wallpaper\\MediaInfoWebSocketServer\\MediaInfoWebSocketServer.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\felix\\.nuget\\packages\\microsoft.windows.cswinrt\\1.6.1\\microsoft.windows.cswinrt.1.6.1.nupkg.sha512",
+    "C:\\Users\\felix\\.nuget\\packages\\websocketsharp\\1.0.3-rc11\\websocketsharp.1.0.3-rc11.nupkg.sha512",
+    "C:\\Users\\felix\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.24\\microsoft.windows.sdk.net.ref.10.0.19041.24.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'WebSocketSharp 1.0.3-rc11' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows10.0.19041'. This package may not be fully compatible with your project.",
+      "libraryId": "WebSocketSharp",
+      "targetGraphs": [
+        "net6.0-windows10.0.19041"
+      ]
+    }
+  ]
+}

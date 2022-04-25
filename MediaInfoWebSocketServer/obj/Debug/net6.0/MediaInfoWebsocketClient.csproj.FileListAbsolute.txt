@@ -1,0 +1,15 @@
+D:\Programming\C#\MediaInfoWebsocketClient\bin\Debug\net6.0\MediaInfoWebsocketClient.exe
+D:\Programming\C#\MediaInfoWebsocketClient\bin\Debug\net6.0\MediaInfoWebsocketClient.deps.json
+D:\Programming\C#\MediaInfoWebsocketClient\bin\Debug\net6.0\MediaInfoWebsocketClient.runtimeconfig.json
+D:\Programming\C#\MediaInfoWebsocketClient\bin\Debug\net6.0\MediaInfoWebsocketClient.dll
+D:\Programming\C#\MediaInfoWebsocketClient\bin\Debug\net6.0\MediaInfoWebsocketClient.pdb
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.csproj.AssemblyReference.cache
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.AssemblyInfoInputs.cache
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.AssemblyInfo.cs
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.csproj.CoreCompileInputs.cache
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.dll
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\refint\MediaInfoWebsocketClient.dll
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.pdb
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\MediaInfoWebsocketClient.genruntimeconfig.cache
+D:\Programming\C#\MediaInfoWebsocketClient\obj\Debug\net6.0\ref\MediaInfoWebsocketClient.dll
